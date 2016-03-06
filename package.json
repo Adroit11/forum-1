@@ -1,5 +1,5 @@
 {
-  "name": "Basic Forum",
+  "name": "BasicForum",
   "main": "server.js",
   "engines": {
     "node": "4.2.2"
