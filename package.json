@@ -1,6 +1,9 @@
 {
   "name": "Basic Forum",
   "main": "server.js",
+  "engines": {
+    "node": "4.2.2"
+  },
   "scripts": {
     "start": "node ./server"
   },
