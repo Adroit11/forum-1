@@ -1,0 +1,41 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include partials/head %>
+
+</head>
+<body>
+        <% include partials/header %>
+        <div class="row">
+          <% if (message.length > 0) { %>
+              <div class="alert alert-danger"><%= message %></div>
+          <% } %>
+				<% for(var i=0; i < categories.length; i++) {
+							%>
+
+                  <div class="col-md-4">
+                      <div class="card">
+                        <a style="display:block;text-decoration:none;" href="/topic/viewtopics/<%= categories[i].id %>/<%= categories[i].category %>">
+                          <div class="card-image">
+                              <img style="height:300px" class="img-responsive" src="/images/<%= categories[i].category %>.jpg">
+                              <span class="card-title"><%= categories[i].category %></span>
+                          </div>
+                        </a>
+
+                          <div class="card-content">
+                              <p>Category Description</p>
+                          </div>
+
+                          <div class="card-action">
+                              <a href="topic/addtopic/<%= categories[i].id %>/<%= categories[i].category %>">Post Something</a>
+                          </div>
+                      </div>
+                  </div>
+
+        <% } %>
+        </div>
+				<script>console.log('<%= test %>')</script>
+        <% include partials/footer %>
+</body>
+</html>

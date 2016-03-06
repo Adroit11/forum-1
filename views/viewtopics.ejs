@@ -1,0 +1,31 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+    <% include partials/head %>
+
+</head>
+<body>
+        <% include partials/header %>
+        <div class="row">
+				<% for(var i=0; i < topics.length; i++) {
+							%>
+
+                  <div class="col-md-12">
+                      <a style="text-decoration:none;color:inherit;" href="/topic/viewposts/<%= topics[i].topicid %>/<%= topics[i].title %>">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <img src="/images/user.png" height="50px" title="<%= topics[i].username %>" class="img-circle">
+                            <b><i><%= topics[i].title %></i></b>
+                            <!-- <p>By <%= topics[i].username %></p> -->
+                          </div>
+                        </div>
+                      </a>
+                  </div>
+
+
+        <% } %>
+        </div>
+        <% include partials/footer %>
+</body>
+</html>
