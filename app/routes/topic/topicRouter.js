@@ -74,7 +74,7 @@ router.get('/editreply/:replyid', isLoggedIn, function(req, res) {
 router.get('/viewtopics/:catid/:category',function(req, res) {
   var categoryId=req.params.catid;
     console.log("catid:"+categoryId);
-    connection.query('SELECT *,topics.id as topicid FROM topics,users where categoryId=? and userid=users.id',[categoryId],function(err, topics, fields){
+    connection.query('SELECT *,(select count(*) from posts where topicid=topics.id) as replyCount,topics.id as topicid FROM topics,users,categories where categoryId=? and topics.userid=users.id and categories.id=categoryId',[categoryId],function(err, topics, fields){
     if (err) throw err;
     res.render('viewtopics.ejs', {
       user : req.user,

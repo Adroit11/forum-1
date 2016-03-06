@@ -8,6 +8,10 @@
 <body>
         <% include partials/header %>
         <div class="row">
+          <div class="col-md-12">
+            <h2><% if(topics[0]){%><%=topics[0].category%><%}else{%>This category is empty<%}%></h2>
+            <a href="/topic/addtopic/<%= catid %>/a" class="btn btn-success btn-sm">Post Something</a>
+          </div>
 				<% for(var i=0; i < topics.length; i++) {
 							%>
 
@@ -16,7 +20,10 @@
                         <div class="panel panel-default">
                           <div class="panel-body">
                             <img src="/images/user.png" height="50px" title="<%= topics[i].username %>" class="img-circle">
-                            <b><i><%= topics[i].title %></i></b>
+                            <b><u><%= topics[i].title %></u></b>
+                            <span class=""><i><%= topics[i].timestamp %></i></span>
+                            <span class="badge pull-right" style="font-size:15px;"><b><%= topics[i].replyCount %></b></span>
+
                             <!-- <p>By <%= topics[i].username %></p> -->
                           </div>
                         </div>

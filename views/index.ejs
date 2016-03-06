@@ -14,21 +14,26 @@
 				<% for(var i=0; i < categories.length; i++) {
 							%>
 
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       <div class="card">
                         <a style="display:block;text-decoration:none;" href="/topic/viewtopics/<%= categories[i].id %>/<%= categories[i].category %>">
                           <div class="card-image">
                               <img style="height:300px" class="img-responsive" src="/images/<%= categories[i].category %>.jpg">
-                              <span class="card-title"><%= categories[i].category %></span>
+                              <span class="card-title"><b><p style="
+
+text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+"><%= categories[i].category %></p></b></span>
                           </div>
                         </a>
 
-                          <div class="card-content">
+                          <!-- <div class="card-content">
                               <p>Category Description</p>
-                          </div>
+                          </div> -->
 
                           <div class="card-action">
-                              <a href="topic/addtopic/<%= categories[i].id %>/<%= categories[i].category %>">Post Something</a>
+                              <a href="topic/addtopic/<%= categories[i].id %>/<%= categories[i].category %>">Post Something &nbsp; <span class="fa fa-pencil-square-o"></span></a>
                           </div>
                       </div>
                   </div>
