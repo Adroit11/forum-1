@@ -1,23 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Mar 05, 2016 at 02:09 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 5.6.15
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 06, 2016 at 06:19 PM
+-- Server version: 5.7.11
+-- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Database: `forum`
+-- Database: `forumabc`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +31,16 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `category`) VALUES
 (1, 'General'),
-(2, 'Sports');
+(2, 'Sports'),
+(3, 'Education'),
+(4, 'Art'),
+(5, 'Games'),
+(6, 'Technology'),
+(7, 'Robotics'),
+(8, 'Programming'),
+(9, 'Electronics'),
+(10, 'Life Skills'),
+(11, 'Science');
 
 -- --------------------------------------------------------
 
@@ -47,25 +50,27 @@ INSERT INTO `categories` (`id`, `category`) VALUES
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `title` varchar(100) DEFAULT NULL,
   `userid` int(11) NOT NULL,
   `message` longtext NOT NULL,
   `topicid` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+-- --------------------------------------------------------
 
 --
--- Table structure for table `topic`
+-- Table structure for table `topics`
 --
 
-CREATE TABLE `topic` (
+CREATE TABLE `topics` (
   `id` int(11) NOT NULL,
   `title` text NOT NULL,
-  `categoryId` int(11) NOT NULL
+  `categoryId` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 
 -- --------------------------------------------------------
@@ -78,9 +83,10 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` char(60) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `type` enum('admin','simple') NOT NULL DEFAULT 'simple'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 --
@@ -100,9 +106,9 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `topic`
+-- Indexes for table `topics`
 --
-ALTER TABLE `topic`
+ALTER TABLE `topics`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -120,22 +126,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
--- AUTO_INCREMENT for table `topic`
+-- AUTO_INCREMENT for table `topics`
 --
-ALTER TABLE `topic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `topics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
