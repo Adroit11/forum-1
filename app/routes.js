@@ -16,9 +16,6 @@ module.exports = function(app, passport) {
 	// HOME PAGE ===========================
 	// =====================================
 	app.get('/', function(req, res) {
-		//SELECT * FROM categories,`posts`,topic where posts.topicid=topic.id and topic.categoryId=categories.id order by categories.category
-
-		// connection.query('SELECT * FROM categories,`posts`,topic where posts.topicid=topic.id and topic.categoryId=categories.id order by categories.category', function(err, forum, fields) {
 		connection.query('SELECT * FROM categories',function(err, categories, fields){
 			if (err) throw err;
 			// connection.query('SELECT * FROM posts')
